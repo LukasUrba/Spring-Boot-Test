@@ -32,5 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 
-WelcomeMessage.class
-WelcomeMessage
+WelcomeMessage.java
