@@ -1,9 +1,15 @@
 package lukasurba.test.springBootTest;
 
+import lukasurba.test.springBootTest.run.Location;
+import lukasurba.test.springBootTest.run.Run;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import java.time.LocalDateTime;
 
 @SpringBootApplication
 public class SpringBootTestApplication {
@@ -12,8 +18,14 @@ public class SpringBootTestApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootTestApplication.class, args);
-		log.info("Something New!");
 
+	}
+	@Bean
+	CommandLineRunner runner() {
+		return args -> {
+			Run run = new Run(1,"My Run", LocalDateTime.of(2024,4,10,11,45),LocalDateTime.now(),4, Location.OUTDOOR);
+			log.info("Run: " + run);
+		};
 	}
 
 }
