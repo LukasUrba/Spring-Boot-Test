@@ -30,4 +30,13 @@ public class RunRepo {
         allRuns.add(new Run(1,"My Run", LocalDateTime.now().minusMinutes(30),LocalDateTime.now(),4, Location.OUTDOOR));
         allRuns.add(new Run(2,"My Run 2", LocalDateTime.now(), LocalDateTime.now().plusMinutes(30),3, Location.OUTDOOR));
     }
+
+    void updateRun(Run run, Integer id) {
+        Optional<Run> existingRun = findByID(id);
+        existingRun.ifPresent(value -> allRuns.set(allRuns.indexOf(value), run));
+    }
+
+    void deleteRun(Integer id) {
+        allRuns.removeIf(run -> run.id().equals(id));
+    }
 }
