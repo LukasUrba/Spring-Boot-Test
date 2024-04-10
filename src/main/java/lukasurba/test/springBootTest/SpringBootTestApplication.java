@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @SpringBootApplication
 public class SpringBootTestApplication {
@@ -23,7 +24,7 @@ public class SpringBootTestApplication {
 	@Bean
 	CommandLineRunner runner() {
 		return args -> {
-			Run run = new Run(1,"My Run", LocalDateTime.of(2024,4,10,11,45),LocalDateTime.now(),4, Location.OUTDOOR);
+			Run run = new Run(1,"My Run", LocalDateTime.now().minus(30, ChronoUnit.MINUTES),LocalDateTime.now(),4, Location.OUTDOOR);
 			log.info("Run: " + run);
 		};
 	}
