@@ -24,7 +24,7 @@ public class SpringBootTestApplication {
 	@Bean
 	CommandLineRunner runner() {
 		return args -> {
-			Run run = new Run(1,"My Run", LocalDateTime.now().minus(30, ChronoUnit.MINUTES),LocalDateTime.now(),4, Location.OUTDOOR);
+			Run run = new Run(1,"My Run", LocalDateTime.now().minusMinutes(30),LocalDateTime.now(),4, Location.OUTDOOR);
 			log.info("Run: " + run);
 		};
 	}

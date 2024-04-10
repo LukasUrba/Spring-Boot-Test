@@ -4,7 +4,6 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,6 +19,10 @@ public class RunRepo {
 
     Optional<Run> findByID(Integer id) {
         return allRuns.stream().filter(run -> Objects.equals(run.id(), id)).findFirst();
+    }
+
+    void createRun(Run run) {
+        allRuns.add(run);
     }
 
     @PostConstruct
