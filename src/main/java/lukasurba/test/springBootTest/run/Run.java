@@ -12,13 +12,13 @@ public record Run(
         LocalDateTime startedOn,
         LocalDateTime finishedOn,
         @Positive
-        Integer Miles,
+        Integer miles,
         Location location) {
 
-public Run {
+    public Run {
         if (!finishedOn.isAfter(startedOn)) {
-                throw new IllegalArgumentException("Completed On must be after Started On");
+            throw new IllegalArgumentException("Completed On must be after Started On");
         }
-}
+    }
 
 }
