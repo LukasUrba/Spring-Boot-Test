@@ -15,11 +15,10 @@ public record Run(
         Integer Miles,
         Location location) {
 
-//    Throws error that it may not be initialised?
-//    TODO sort this ^
-//    public Run() {
-//        if (!finishedOn.isAfter(startedOn)){
-//            throw new IllegalArgumentException("Completion time must be after start time.");
-//        }
-//    }
+public Run {
+        if (!finishedOn.isAfter(startedOn)) {
+                throw new IllegalArgumentException("Completed On must be after Started On");
+        }
+}
+
 }
