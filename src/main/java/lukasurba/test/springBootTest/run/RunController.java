@@ -1,5 +1,7 @@
 package lukasurba.test.springBootTest.run;
 
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -14,6 +16,7 @@ public class RunController {
     private final RunRepo runRepo;
 
 //    Autowired here is implicit
+    @Autowired
     public RunController(RunRepo runRepo) {
         this.runRepo = runRepo;
     }
@@ -34,13 +37,13 @@ public class RunController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    void create(@RequestBody Run run) {
+    void create(@Valid @RequestBody Run run) {
         runRepo.createRun(run);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
-    void update(@RequestBody Run run, @PathVariable Integer id) {
+    void update(@Valid @RequestBody Run run, @PathVariable Integer id) {
         runRepo.updateRun(run,id);
     }
 
