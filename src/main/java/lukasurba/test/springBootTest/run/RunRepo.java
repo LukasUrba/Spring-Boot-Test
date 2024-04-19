@@ -25,15 +25,20 @@ public class RunRepo {
                 .query(Run.class)
                 .list();
     }
-//
-//    Optional<Run> findByID(Integer id) {
-//        return allRuns.stream().filter(run -> Objects.equals(run.id(), id)).findFirst();
-//    }
-//
-//    void createRun(Run run) {
-//        allRuns.add(run);
-//    }
-//
+
+    Optional<Run> findByID(Integer id) {
+        return jdbcClient.sql("SELECT id,title,started_on,finished_on, miles, location FROM Run WHERE id = :id")
+                .param("id",id)
+                .query(Run.class)
+                .optional();
+    }
+
+    void createRun(Run run) {
+        var updated = jdbcClient.sql("INSERT INTO Run(id,title,started_on,finished_on, miles, location) values(?,?,?,?,?,?")
+                .params(List.of(run.id(),run.title(),run.startedOn(),run.finishedOn(),run.miles(),run.location().toString()))
+                .update();
+    }
+
 //    @PostConstruct
 //    private void init() {
 //        allRuns.add(new Run(1,"My Run", LocalDateTime.now().minusMinutes(30),LocalDateTime.now(),4, Location.OUTDOOR));
