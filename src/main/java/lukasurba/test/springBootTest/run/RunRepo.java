@@ -20,9 +20,11 @@ public class RunRepo {
     }
 //    private final List<Run> allRuns = new ArrayList<>();
 
-//    List<Run> findAll() {
-//        return allRuns;
-//    }
+    List<Run> findAll() {
+        return jdbcClient.sql("select * from run")
+                .query(Run.class)
+                .list();
+    }
 //
 //    Optional<Run> findByID(Integer id) {
 //        return allRuns.stream().filter(run -> Objects.equals(run.id(), id)).findFirst();

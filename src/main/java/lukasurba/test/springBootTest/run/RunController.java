@@ -20,11 +20,11 @@ public class RunController {
         this.runRepo = runRepo;
     }
 
-//    @GetMapping("")
-//    List<Run> findAll() {
-//        return runRepo.findAll();
-//    }
-//
+    @GetMapping("")
+    List<Run> findAll() {
+        return runRepo.findAll();
+    }
+
 //    @GetMapping("/{id}")
 //    Run findByID(@PathVariable Integer id) {
 //        Optional<Run> run = runRepo.findByID(id);
