@@ -2,6 +2,7 @@ package lukasurba.test.springBootTest;
 
 import lukasurba.test.springBootTest.run.Location;
 import lukasurba.test.springBootTest.run.Run;
+import lukasurba.test.springBootTest.run.RunRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -21,12 +22,12 @@ public class SpringBootTestApplication {
 
 	}
 
-//	@Bean
-//	CommandLineRunner runner() {
-//		return args -> {
-//			Run run = new Run(1,"My Run", LocalDateTime.now().minusMinutes(30),LocalDateTime.now(),4, Location.OUTDOOR);
-//			log.info("Run: " + run);
-//		};
-//	}
+	@Bean
+	CommandLineRunner runner(RunRepo runRepo) {
+		return args -> {
+			Run run = new Run(1,"My Run!", LocalDateTime.now().minusMinutes(30),LocalDateTime.now(),4, Location.OUTDOOR);
+			runRepo.createRun(run);
+		};
+	}
 
 }
