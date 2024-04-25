@@ -25,30 +25,30 @@ public class RunController {
         return runRepo.findAll();
     }
 
-//    @GetMapping("/{id}")
-//    Run findByID(@PathVariable Integer id) {
-//        Optional<Run> run = runRepo.findByID(id);
-//        if (run.isEmpty()){
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Run Not Found");
-//        }
-//        return run.get();
-//    }
-//
-//    @PostMapping("")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    void create(@Valid @RequestBody Run run) {
-//        runRepo.createRun(run);
-//    }
-//
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    @PutMapping("/{id}")
-//    void update(@Valid @RequestBody Run run, @PathVariable Integer id) {
-//        runRepo.updateRun(run,id);
-//    }
-//
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    @DeleteMapping("/{id}")
-//    void delete(@PathVariable Integer id) {
-//        runRepo.deleteRun(id);
-//    }
+    @GetMapping("/{id}")
+    Run findByID(@PathVariable Integer id) {
+        Optional<Run> run = runRepo.findByID(id);
+        if (run.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Run Not Found");
+        }
+        return run.get();
+    }
+
+    @PostMapping("")
+    @ResponseStatus(HttpStatus.CREATED)
+    void create(@Valid @RequestBody Run run) {
+        runRepo.createRun(run);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/{id}")
+    void update(@Valid @RequestBody Run run, @PathVariable Integer id) {
+        runRepo.updateRun(run,id);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    void delete(@PathVariable Integer id) {
+        runRepo.deleteRun(id);
+    }
 }
