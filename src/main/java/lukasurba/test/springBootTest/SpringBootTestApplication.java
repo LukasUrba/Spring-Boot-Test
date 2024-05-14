@@ -22,12 +22,12 @@ public class SpringBootTestApplication {
 
 	}
 
-	@Bean
-	CommandLineRunner runner(RunRepo runRepo) {
-		return args -> {
-			Run run = new Run(1,"My Run", LocalDateTime.now().minusMinutes(30),LocalDateTime.now(),4, Location.OUTDOOR);
-			runRepo.createRun(run);
-		};
-	}
+//	@Bean
+//	CommandLineRunner runner(RunRepo runRepo) {
+//		return args -> {
+//			Run run = new Run(1,"My Run", LocalDateTime.now().minusMinutes(30),LocalDateTime.now(),4, Location.OUTDOOR);
+//			runRepo.createRun(run);
+//		};
+//	}
 
 }
