@@ -55,8 +55,8 @@ public class RunRepo {
     }
 
     public void deleteRun(Integer id) {
-        var updated = jdbcClient.sql("DELETE FROM Run WHERE id= :id")
-                .params("id", id)
+        var updated = jdbcClient.sql("DELETE FROM run WHERE id= :id")
+                .param("id", id)
                 .update();
         Assert.state(updated==1,"Failed to delete run "+ id);
     }
